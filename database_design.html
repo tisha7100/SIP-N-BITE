@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sip N Bite - Main Tables Data Dictionary</title>
+    <style>
+        :root {
+            --primary: #f39c12;
+            --secondary: #2c3e50;
+            --bg: #ffffff;
+            --text: #333333;
+            --table-header: #34495e;
+            --table-border: #bdc3c7;
+            --accent: #e67e22;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 40px;
+            background-color: #f4f4f4;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 950px;
+            margin: 0 auto;
+            background: white;
+            padding: 50px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .cover-page {
+            text-align: center;
+            height: 850px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 2px solid var(--primary);
+            margin-bottom: 50px;
+        }
+
+        .logo {
+            width: 250px;
+            height: 250px;
+            margin-bottom: 30px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--primary);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            font-size: 3.5em;
+            letter-spacing: 5px;
+            margin: 20px 0;
+            color: var(--secondary);
+            text-transform: uppercase;
+            border-bottom: 4px solid var(--primary);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .db-name {
+            font-size: 1.5em;
+            margin-top: 50px;
+            font-weight: bold;
+        }
+
+        .db-name span {
+            border-bottom: 2px dashed var(--primary);
+            color: var(--accent);
+        }
+
+        .table-section {
+            margin-top: 60px;
+            page-break-before: always;
+        }
+
+        .table-title {
+            font-size: 1.6em;
+            font-weight: bold;
+            color: var(--secondary);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            border-left: 5px solid var(--primary);
+            padding-left: 15px;
+        }
+
+        .table-desc {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #555;
+            padding-left: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 50px;
+            font-size: 0.95em;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        th {
+            background-color: var(--table-header);
+            color: white;
+            text-align: left;
+            padding: 14px;
+            border: 1px solid var(--table-border);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        td {
+            padding: 12px;
+            border: 1px solid var(--table-border);
+        }
+
+        tr:nth-child(even) {
+            background-color: #fcfcfc;
+        }
+
+        tr:hover {
+            background-color: #f1f8ff;
+        }
+
+        .no-col {
+            width: 50px;
+            text-align: center;
+            font-weight: bold;
+            color: var(--secondary);
+        }
+
+        .field-col {
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-weight: bold;
+            color: #d35400;
+        }
+
+        .type-col {
+            color: #2980b9;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .container {
+                box-shadow: none;
+                max-width: 100%;
+                padding: 0;
+                border-radius: 0;
+            }
+
+            .table-section {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Cover Page -->
+        <div class="cover-page">
+            <img src="sip_n_bite_logo.png" alt="Sip N Bite Logo" class="logo">
+            <h1>DATA DICTIONARY</h1>
+            <div class="db-name">Database Name: <span>food_snb</span></div>
+            <p style="margin-top: 20px; color: #7f8c8d;">Main System Tables Analysis</p>
+        </div>
+
+        <!-- 1. Users Table -->
+        <div class="table-section">
+            <div class="table-title">users:</div>
+            <p class="table-desc">It stores registration and authentication details of the customers.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th class="no-col">No.</th>
+                        <th>Field Name</th>
+                        <th>Data Type</th>
+                        <th>Size</th>
+                        <th>Constrain</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td class="field-col">id</td>
+                        <td class="type-col">BigInt</td>
+                        <td>20</td>
+                        <td>Primary Key, AI</td>
+                        <td>Unique user identifier</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td class="field-col">name</td>
+                        <td class="type-col">Varchar</td>
+                        <td>255</td>
+                        <td>Not Null</td>
+                        <td>User's full name</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td class="field-col">email</td>
+                        <td class="type-col">Varchar</td>
+                        <td>191</td>
+                        <td>Unique, Not Null</td>
+                        <td>Email address for login</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td class="field-col">password</td>
+                        <td class="type-col">Varchar</td>
+                        <td>255</td>
+                        <td>Not Null</td>
+                        <td>Bcrypt hashed password</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td class="field-col">status</td>
+                        <td class="type-col">Enum</td>
+                        <td>-</td>
+                        <td>'active','blocked'</td>
+                        <td>Account status</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td class="field-col">registration_time</td>
+                        <td class="type-col">Timestamp</td>
+                        <td>-</td>
+                        <td>Nullable</td>
+                        <td>Time of user signup</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 2. Categories Table -->
+        <div class="table-section">
+            <div class="table-title">categories:</div>
+            <p class="table-desc">It stores different food categories for menu classification.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th class="no-col">No.</th>
+                        <th>Field Name</th>
+                        <th>Data Type</th>
+                        <th>Size</th>
+                        <th>Constrain</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td class="field-col">id</td>
+                        <td class="type-col">BigInt</td>
+                        <td>20</td>
+                        <td>Primary Key, AI</td>
+                        <td>Unique category ID</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td class="field-col">name</td>
+                        <td class="type-col">Varchar</td>
+                        <td>255</td>
+                        <td>Not Null</td>
+                        <td>Category name (e.g. Pizza)</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td class="field-col">image</td>
+                        <td class="type-col">Varchar</td>
+                        <td>255</td>
+                        <td>Nullable</td>
+                        <td>Path to category icon/image</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 3. Tables Layout Table -->
+        <div class="table-section">
+            <div class="table-title">tables_layout:</div>
+            <p class="table-desc">It stores the physical layout and status of restaurant tables.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th class="no-col">No.</th>
+                        <th>Field Name</th>
+                        <th>Data Type</th>
+                        <th>Size</th>
+                        <th>Constrain</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td class="field-col">id</td>
+                        <td class="type-col">BigInt</td>
+                        <td>20</td>
+                        <td>Primary Key, AI</td>
+                        <td>Unique table ID</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td class="field-col">table_number</td>
+                        <td class="type-col">Varchar</td>
+                        <td>255</td>
+                        <td>Unique, Not Null</td>
+                        <td>Display number of the table</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td class="field-col">capacity</td>
+                        <td class="type-col">Unsigned Int</td>
+                        <td>-</td>
+                        <td>Not Null</td>
+                        <td>Number of seats available</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td class="field-col">status</td>
+                        <td class="type-col">Enum</td>
+                        <td>-</td>
+                        <td>'available','booked'</td>
+                        <td>Real-time booking status</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td class="field-col">is_active</td>
+                        <td class="type-col">Boolean</td>
+                        <td>-</td>
+                        <td>Default true</td>
+                        <td>Active status in layout</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 4. Table Bookings Table -->
+        <div class="table-section">
+            <div class="table-title">table_bookings:</div>
+            <p class="table-desc">It stores reservation requests made by users for specific tables.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th class="no-col">No.</th>
+                        <th>Field Name</th>
+                        <th>Data Type</th>
+                        <th>Size</th>
+                        <th>Constrain</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td class="field-col">id</td>
+                        <td class="type-col">BigInt</td>
+                        <td>20</td>
+                        <td>Primary Key, AI</td>
+                        <td>Booking reference ID</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td class="field-col">user_id</td>
+                        <td class="type-col">BigInt</td>
+                        <td>20</td>
+                        <td>Foreign Key</td>
+                        <td>Reference to users table</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td class="field-col">table_id</td>
+                        <td class="type-col">BigInt</td>
+                        <td>20</td>
+                        <td>Foreign Key</td>
+                        <td>Reference to layout table</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td class="field-col">booking_date</td>
+                        <td class="type-col">Date</td>
+                        <td>-</td>
+                        <td>Not Null</td>
+                        <td>Scheduled date</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td class="field-col">status</td>
+                        <td class="type-col">Enum</td>
+                        <td>-</td>
+                        <td>Pending/Accepted...</td>
+                        <td>Current status of request</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 5. Cart Table -->
+        <div class="table-section">
+            <div class="table-title">cart:</div>
+            <p class="table-desc">It stores temporary items added by users before checkout.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th class="no-col">No.</th>
+                        <th>Field Name</th>
+                        <th>Data Type</th>
+                        <th>Size</th>
+                        <th>Constrain</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td class="field-col">id</td>
+                        <td class="type-col">BigInt</td>
+                        <td>20</td>
+                        <td>Primary Key, AI</td>
+                        <td>Cart item unique ID</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td class="field-col">user_id</td>
+                        <td class="type-col">BigInt</td>
+                        <td>20</td>
+                        <td>Foreign Key</td>
+                        <td>The owner of the cart</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td class="field-col">food_id</td>
+                        <td class="type-col">BigInt</td>
+                        <td>20</td>
+                        <td>Foreign Key</td>
+                        <td>Item added to cart</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td class="field-col">quantity</td>
+                        <td class="type-col">Unsigned Int</td>
+                        <td>-</td>
+                        <td>Not Null</td>
+                        <td>Number of items</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 6. Orders Table -->
+        <div class="table-section">
+            <div class="table-title">orders:</div>
+            <p class="table-desc">It stores finalized order transactions and delivery details.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th class="no-col">No.</th>
+                        <th>Field Name</th>
+                        <th>Data Type</th>
+                        <th>Size</th>
+                        <th>Constrain</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td class="field-col">id</td>
+                        <td class="type-col">BigInt</td>
+                        <td>20</td>
+                        <td>Primary Key, AI</td>
+                        <td>Order reference number</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td class="field-col">user_id</td>
+                        <td class="type-col">BigInt</td>
+                        <td>20</td>
+                        <td>Foreign Key</td>
+                        <td>The ordering customer</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td class="field-col">total_amount</td>
+                        <td class="type-col">Decimal</td>
+                        <td>10,2</td>
+                        <td>Not Null</td>
+                        <td>Base amount</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td class="field-col">final_amount</td>
+                        <td class="type-col">Decimal</td>
+                        <td>10,2</td>
+                        <td>Not Null</td>
+                        <td>Amount after tax/charges</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td class="field-col">status</td>
+                        <td class="type-col">Enum</td>
+                        <td>-</td>
+                        <td>Default prep</td>
+                        <td>Lifecycle of the order</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 7. Bills Table -->
+        <div class="table-section">
+            <div class="table-title">bills:</div>
+            <p class="table-desc">It stores generated invoices for completed orders.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th class="no-col">No.</th>
+                        <th>Field Name</th>
+                        <th>Data Type</th>
+                        <th>Size</th>
+                        <th>Constrain</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td class="field-col">id</td>
+                        <td class="type-col">BigInt</td>
+                        <td>20</td>
+                        <td>Primary Key, AI</td>
+                        <td>Invoice entry ID</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td class="field-col">order_id</td>
+                        <td class="type-col">BigInt</td>
+                        <td>20</td>
+                        <td>Foreign Key</td>
+                        <td>Reference to parent order</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td class="field-col">bill_number</td>
+                        <td class="type-col">Varchar</td>
+                        <td>255</td>
+                        <td>Unique</td>
+                        <td>Public bill number</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td class="field-col">final_amount</td>
+                        <td class="type-col">Decimal</td>
+                        <td>10,2</td>
+                        <td>Not Null</td>
+                        <td>Final payable amount</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td class="field-col">payment_method</td>
+                        <td class="type-col">Varchar</td>
+                        <td>255</td>
+                        <td>Not Null</td>
+                        <td>Mode of transaction</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,108 @@
+SIP N BITE - RESTAURANT MANAGEMENT SYSTEM DOCUMENTATION
+
+1. Introduction
+ 1.1. Proposed system and its Objectives
+      The proposed system, "Sip N Bite," is a comprehensive restaurant management and food ordering web application built using Laravel (PHP). 
+      Objectives:
+      - To digitize the restaurant's menu and the end-to-end ordering process.
+      - To provide a seamless, modern online ordering experience for customers.
+      - To give administrators a centralized dashboard to manage menus, incoming orders, table bookings, and billing.
+      - To support flexible payment modes like Cash on Delivery (COD).
+      - To improve overall operational efficiency and order tracking inside the restaurant.
+
+ 1.2. Core Components
+      - Customer Portal: Allows users to browse categories, view dishes, add items to their cart, place orders, book tables, and view their order history.
+      - Admin Dashboard: Enables administrators to manage food categories (cuisines), menu items, table layouts, incoming web orders, and generate invoices.
+      - Database System (MySQL): Securely stores all user profiles, orders, categories, food items, payments, and activity logs.
+      - Backend Processing (Laravel/PHP): Handles business logic, secure authentication, API endpoints, and dynamic view routing.
+
+ 1.3. Minimum and Maximum Software/Hardware requirements
+      Hardware Requirements:
+      - Minimum:
+        - Server/PC: Dual-core Processor, 4GB RAM, 10GB Free Storage.
+        - Client/User: Any device (Mobile/PC/Tablet) with internet access and a screen size supporting web browsing.
+      - Maximum/Recommended:
+        - Server/PC: Quad-core Processor, 8GB+ RAM, 50GB SSD Storage for optimal database performance and handling concurrent user load.
+
+      Software Requirements:
+      - Minimum:
+        - OS: Windows 7/10/11, Linux, or macOS.
+        - Web Server: Apache/Nginx (XAMPP/WAMP for development).
+        - Database: MySQL 5.7+
+        - Programming Environment: PHP 8.1+, Composer, Node.js (for frontend asset bundling).
+        - Browser: Google Chrome, Mozilla Firefox, Safari, or Microsoft Edge.
+
+ 1.4. Advantages and Limitations of the Proposed System
+      Advantages:
+      - Organizes food items by category efficiently, making navigation easy for customers.
+      - Provides an intuitive, responsive interface for both customers and admins.
+      - Streamlines order processing and billing with automated invoice generation capabilities.
+      - Includes a dedicated table tracking system to manage dine-in customers alongside online orders.
+      Limitations:
+      - Relies solely on internal server uptime or external hosting; requires internet connectivity to process live remote orders.
+      - Current version may not have AI-based predictive inventory management (raw material tracking).
+
+2. Requirement Determination & Analysis
+ 2.1. Requirement Determination
+      The project requirements were gathered by deeply analyzing modern restaurant workflows, assessing typical user pain points in traditional ordering (like delayed service or miscommunication), and observing the need for a unified dashboard mapping tables, categories, and overall checkout flows. Key determined requirements include secure admin login, flexible food categorization (e.g., North Indian, South Indian, Fast Food), cart session persistence, and a highly responsive User Interface (styled coherently).
+
+ 2.2. Targeted Users
+      - Customers: Individuals browsing the restaurant menu, ordering food online for delivery or takeout, or reserving a table for dine-in.
+      - Restaurant Admins/Managers: Staff responsible for updating the menu, monitoring live orders, assigning/managing tables, and billing.
+      - Kitchen Staff: Personnel that prepare food based on the incoming digital order queues confirmed by the admin.
+
+4. Agile Documentation
+ 4.1. Agile Project Charter
+      Project Name: Sip N Bite Development
+      Vision: To create a reliable, engaging, and comprehensive restaurant management and ordering system using Agile methodology.
+      Key Stakeholders: Restaurant Owner/Management, Development Team, End-Customers.
+      Definition of Done (DoD): Code committed, successfully tested, deployed on local/staging environments, and fully functional across customer/admin sides without critical bugs.
+
+ 4.2. Agile Roadmap / Schedule
+      - Iteration 1: Project setup, database architecture (migrations), core backend (Auth, User/Admin Roles), basic frontend layout.
+      - Iteration 2: Menu and Category CRUD operations, Image uploads, Admin dashboard structuring.
+      - Iteration 3: Cart system, Order processing flow, Table booking logic.
+      - Iteration 4: Unified billing/invoices, final UI polish (blue theme), bug fixing, testing, and documentation.
+
+ 4.3. Agile Project Plan
+      The project is broken down into multiple Sprints. We focus on continuous delivery, ensuring that after every sprint, a working module (e.g., Menu management, Cart system) is ready for review. Laravel is chosen for its rapid framework capabilities, paired with Blade views to maintain development velocity.
+
+ 4.4. Agile User Story (Minimum 3 Tasks)
+      User Story 1: Menu Management
+      - "As an Admin, I want to add, edit, and delete food categories and items so that the menu stays updated for customers."
+      - Task 1: Create Categories table and Admin CRUD interface (allow manual & suggested cuisines).
+      - Task 2: Create Food Items table linked with a foreign key to Categories.
+      - Task 3: Implement image upload and storage for food items.
+
+      User Story 2: Order Placement
+      - "As a Customer, I want to add items to my cart and place an order seamlessly so that I can buy food without hassle."
+      - Task 1: Build a reliable Cart system.
+      - Task 2: Create a checkout page that accurately captures user addresses and delivery methods.
+      - Task 3: Generate a unique Order ID and save the finalized order components into the database.
+
+      User Story 3: Billing and Invoicing
+      - "As an Admin, I want to view incoming orders and generate bills so that I can process payments and charge customers."
+      - Task 1: Create an Admin 'View Order' summary interface.
+      - Task 2: Implement invoice generation logic (e.g., dynamically hiding 'PAID' badges based on Cash On Delivery status).
+      - Task 3: Enable order status updates (Pending -> Processing -> Completed).
+
+ 4.5. Agile Release Plan
+      - Release 1.0 (MVP): Core Admin login, Category/Food Management, Basic homepage.
+      - Release 1.5: Functional Cart, Checkout integration, user profiles.
+      - Release 2.0 (Final): Full table booking capabilities, printable billing integration, complete UI restyling, and documented codebase.
+
+ 4.6. Agile Sprint Backlog
+      Current focus items (Sample representation):
+      - Refine category management to restrict suggestions but allow manual inputs.
+      - Finalize invoice views and remove duplicate address inconsistencies.
+      - Prepare the finalized project report and documentation (current task).
+
+ 4.7. Agile Test Plan
+      - Unit Testing: Test individual controller actions (e.g., verifying `CategoryController` saves manual entries correctly).
+      - Integration Testing: Ensure the flow from "Adding to Cart" -> "Checkout" -> "Admin Order View" works flawlessly and updates database models accordingly.
+      - User Acceptance Testing (UAT): Conduct walk-throughs acting as a customer ordering food and an admin fulfilling the order to confirm system responsiveness and correctness.
+
+ 4.8. Earned-value and burn charts
+      (Narrative description for documentation)
+      - Burn-down Chart: Used to track daily progress and show remaining story points across each sprint, ensuring the development stays on schedule for milestone releases.
+      - Earned Value Management (EVM): Periodically comparing Planned Value (tasks scoped) versus Earned Value (tasks completed) to guarantee the project scope remains within designated timeline constraints without compromising features.
